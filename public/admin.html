@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administración — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script type="module" src="/js/pages/admin.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <div id="gate"><div class="skeleton" style="height:120px"></div></div>
+  <div id="ui" hidden>
+    <div class="row between" style="margin-bottom:6px"><div><h1 style="font-size:1.6rem;margin:0">Administración de la plataforma</h1><p class="muted" style="margin:0" id="who"></p></div>
+      <button class="btn btn-secondary btn-sm" id="logout" type="button">Salir</button></div>
+    <p class="small muted">Acceso limitado: aquí no se ven contactos de clientes. Toda acción queda en la bitácora.</p>
+    <div class="tabs" role="tablist" aria-label="Administración">
+      <button role="tab" data-tab="resumen" aria-controls="a-resumen">Resumen</button>
+      <button role="tab" data-tab="negocios" aria-controls="a-negocios">Negocios y pilotos</button>
+      <button role="tab" data-tab="categorias" aria-controls="a-categorias">Categorías</button>
+      <button role="tab" data-tab="pagos" aria-controls="a-pagos">Suscripciones y pagos</button>
+      <button role="tab" data-tab="incidentes" aria-controls="a-incidentes">Incidentes y soporte</button>
+      <button role="tab" data-tab="integraciones" aria-controls="a-integraciones">Integraciones</button>
+      <button role="tab" data-tab="privacidad" aria-controls="a-privacidad">Privacidad</button>
+      <button role="tab" data-tab="bitacora" aria-controls="a-bitacora">Bitácora</button>
+    </div>
+    <section id="a-resumen" role="tabpanel" hidden></section>
+    <section id="a-negocios" role="tabpanel" hidden></section>
+    <section id="a-categorias" role="tabpanel" hidden></section>
+    <section id="a-pagos" role="tabpanel" hidden></section>
+    <section id="a-incidentes" role="tabpanel" hidden></section>
+    <section id="a-integraciones" role="tabpanel" hidden></section>
+    <section id="a-privacidad" role="tabpanel" hidden></section>
+    <section id="a-bitacora" role="tabpanel" hidden></section>
+  </div>
+</main>
+</body>
+</html>

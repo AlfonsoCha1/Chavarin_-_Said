@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mis tarjetas — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script type="module" src="/js/pages/mis-tarjetas.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <section id="login" hidden style="max-width:560px">
+    <h1>Mis tarjetas</h1>
+    <p class="muted">Entra con el celular o correo que registraste. Te enviamos un código; también sirve para recuperar tu tarjeta si cambiaste de teléfono o perdiste el papel.</p>
+    <form class="panel" id="lform" novalidate>
+      <div class="field"><span style="display:block;font-weight:600;margin-bottom:6px">Enviar código por</span>
+        <div class="seg" role="radiogroup" aria-label="Canal">
+          <label><input type="radio" name="channel" value="whatsapp" checked><span>WhatsApp</span></label>
+          <label><input type="radio" name="channel" value="sms"><span>SMS</span></label>
+          <label><input type="radio" name="channel" value="email"><span>Correo</span></label>
+        </div></div>
+      <div class="field"><label for="contact" id="contactLabel">Celular (10 dígitos)</label><input id="contact" type="tel" inputmode="numeric" autocomplete="tel-national"></div>
+      <div id="lmsg"></div>
+      <button class="btn btn-primary" type="submit">Enviar código</button>
+    </form>
+    <form class="panel" id="cform" hidden novalidate style="margin-top:16px">
+      <p id="lsent" class="muted"></p>
+      <div id="lsim"></div>
+      <div class="field"><label for="lcode">Código de 6 dígitos</label><input id="lcode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" class="code-input"></div>
+      <div id="cmsg"></div>
+      <button class="btn btn-primary" type="submit">Entrar</button>
+    </form>
+    <p class="small muted" style="margin-top:16px">¿Tu tarjeta es impresa y no registraste contacto? Esa tarjeta funciona al portador y no se puede recuperar en línea; pregunta en el negocio.</p>
+  </section>
+  <section id="app" hidden>
+    <div class="row between"><h1 style="margin:0">Mis tarjetas</h1><button class="btn btn-secondary btn-sm" id="logout" type="button">Salir</button></div>
+    <div id="cards" style="margin-top:18px"></div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel del negocio — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script type="module" src="/js/pages/dueno.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <div id="gate"><div class="skeleton" style="height:120px"></div></div>
+  <div id="ui" hidden>
+    <div class="row between" style="margin-bottom:6px">
+      <div><h1 style="font-size:1.6rem;margin:0" id="title">Panel del negocio</h1><p class="muted" style="margin:0" id="who"></p></div>
+      <div class="row"><a class="btn btn-secondary btn-sm" href="/empleado">Ir al mostrador</a><button class="btn btn-secondary btn-sm" id="logout" type="button">Salir</button></div>
+    </div>
+    <div id="notice" style="margin:10px 0"></div>
+    <div class="tabs" role="tablist" aria-label="Secciones del panel">
+      <button role="tab" data-tab="resumen" aria-controls="p-resumen">Resumen</button>
+      <button role="tab" data-tab="compras" aria-controls="p-compras">Compras</button>
+      <button role="tab" data-tab="canjes" aria-controls="p-canjes">Canjes</button>
+      <button role="tab" data-tab="tarjeta" aria-controls="p-tarjeta">Tarjetas y ajustes</button>
+      <button role="tab" data-tab="empleados" aria-controls="p-empleados">Empleados</button>
+      <button role="tab" data-tab="programa" aria-controls="p-programa">Programa y premios</button>
+      <button role="tab" data-tab="sucursales" aria-controls="p-sucursales">Sucursales y QR</button>
+      <button role="tab" data-tab="perfil" aria-controls="p-perfil">Perfil</button>
+      <button role="tab" data-tab="contingencia" aria-controls="p-contingencia">Contingencia</button>
+      <button role="tab" data-tab="bitacora" aria-controls="p-bitacora">Bitácora</button>
+      <button role="tab" data-tab="soporte" aria-controls="p-soporte">Soporte</button>
+    </div>
+    <section id="p-resumen" role="tabpanel" hidden></section>
+    <section id="p-compras" role="tabpanel" hidden></section>
+    <section id="p-canjes" role="tabpanel" hidden></section>
+    <section id="p-tarjeta" role="tabpanel" hidden></section>
+    <section id="p-empleados" role="tabpanel" hidden></section>
+    <section id="p-programa" role="tabpanel" hidden></section>
+    <section id="p-sucursales" role="tabpanel" hidden></section>
+    <section id="p-perfil" role="tabpanel" hidden></section>
+    <section id="p-contingencia" role="tabpanel" hidden></section>
+    <section id="p-bitacora" role="tabpanel" hidden></section>
+    <section id="p-soporte" role="tabpanel" hidden></section>
+  </div>
+</main>
+</body>
+</html>

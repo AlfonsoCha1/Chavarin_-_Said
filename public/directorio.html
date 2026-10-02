@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Directorio de negocios — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script type="module" src="/js/pages/directorio.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Encuentra un negocio participante</h1>
+  <form class="search-bar" id="search" role="search">
+    <label class="sr-only" for="q">Buscar por nombre, sucursal, dirección o ciudad</label>
+    <input type="search" id="q" name="q" placeholder="Nombre, sucursal, calle, colonia o ciudad" autocomplete="off">
+    <label class="sr-only" for="city">Ciudad</label>
+    <select id="city" name="city"><option value="">Todas las ciudades</option></select>
+    <button class="btn btn-primary" type="submit">Buscar</button>
+  </form>
+  <div class="dir">
+    <aside class="cat-tree hover-open" aria-label="Categorías">
+      <ul id="tree"><li><div class="skeleton" style="height:180px"></div></li></ul>
+    </aside>
+    <section aria-live="polite">
+      <div class="row between" style="margin-bottom:10px"><p id="summary" class="muted" style="margin:0"></p><button class="btn btn-ghost btn-sm" id="clear" type="button" hidden>Quitar filtros</button></div>
+      <div class="results" id="results"></div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

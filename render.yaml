@@ -1,0 +1,48 @@
+# Blueprint de Render: crea el servicio web y la base PostgreSQL.
+# Uso: Render Dashboard → New → Blueprint → elegir este repositorio.
+# ADVERTENCIA (documentación oficial de Render, oct 2026): el plan gratis se duerme tras 15 min sin tráfico,
+# la PostgreSQL gratis se borra 30 días después de crearse (más 14 de gracia) y no tiene respaldos.
+# Úsalo para la DEMO. Para el piloto con negocios reales cambia ambos `plan` a uno de pago.
+services:
+  - type: web
+    name: chavarin-said-lealtad
+    runtime: node
+    plan: free
+    region: ohio
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD
+        value: "1"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: chavarin-said-db
+          property: connectionString
+      - key: DATABASE_SSL
+        value: "false"
+      - key: DEMO_MODE
+        value: "true"
+      - key: SEED_DEMO_ON_EMPTY
+        value: "true"
+      - key: KEEPALIVE_ENABLED
+        value: "true"
+      - key: KEEPALIVE_MINUTES
+        value: "10"
+      - key: KEEPALIVE_HOURS
+        value: "8-22"
+      - key: MESSAGING_PROVIDER
+        value: simulated
+      - key: WALLET_PROVIDER
+        value: simulated
+databases:
+  - name: chavarin-said-db
+    plan: free
+    region: ohio
+    databaseName: lealtad
+    user: lealtad

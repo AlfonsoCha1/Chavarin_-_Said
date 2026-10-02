@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Situaciones y soluciones — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script type="module" src="/js/pages/situaciones.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <h1>Centro de situaciones y soluciones</h1>
+  <p class="lead">Qué hacer cuando algo sale distinto a lo normal: quién responde, en qué pantalla y qué control lo previene.</p>
+  <p class="muted">No cubre todos los incidentes posibles ni promete resolverlos al instante. Cada caso indica si su control está <span class="tag tag-ok">Implementado</span>, <span class="tag tag-sim">Simulado</span>, es un <span class="tag">Procedimiento</span> manual o está <span class="tag tag-pend">Pendiente</span>.</p>
+  <form class="search-bar" id="f" role="search" style="margin:16px 0">
+    <label class="sr-only" for="q">Buscar situación</label><input type="search" id="q" placeholder="Buscar: canje, internet, Wallet, empleado…">
+    <label class="sr-only" for="st">Estado</label><select id="st"><option value="">Todos los estados</option><option value="implementado">Implementado</option><option value="parcial">Parcial</option><option value="simulado">Simulado</option><option value="procedimiento">Procedimiento</option><option value="pendiente">Pendiente</option></select>
+    <span></span>
+  </form>
+  <p id="count" class="muted"></p>
+  <div id="list" class="stack"></div>
+</main>
+</body>
+</html>

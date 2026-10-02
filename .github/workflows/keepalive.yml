@@ -1,0 +1,22 @@
+# Despertador externo de respaldo para Render gratis.
+# El propio servidor ya se visita cada 10 min (KEEPALIVE_ENABLED); esto lo despierta si llegara a dormirse.
+# Usa la variable RENDER_HEALTH_URL si existe (Settings → Secrets and variables → Actions → Variables);
+# si no, la URL del servicio actual en Render.
+# Consumo: cada ejecución cuenta como ~1 minuto de Actions. Cada 30 min de 8:00 a 22:00 (hora CDMX) ≈ 870 min/mes.
+# GitHub puede retrasar u omitir ejecuciones programadas en horas de mucha carga.
+name: Despertador Render
+on:
+  schedule:
+    - cron: '*/30 14-23,0-3 * * *'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Visitar /api/health
+        env:
+          URL: ${{ vars.RENDER_HEALTH_URL || 'https://chavarin-said-lealtad.onrender.com/api/health' }}
+        run: |
+          if [ -z "$URL" ]; then echo "Falta la variable RENDER_HEALTH_URL"; exit 0; fi
+          curl -fsS --max-time 100 --retry 3 --retry-delay 20 "$URL"

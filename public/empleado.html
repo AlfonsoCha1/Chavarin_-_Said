@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel del empleado — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script src="/vendor/jsQR.js" defer></script>
+<script type="module" src="/js/pages/empleado.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <div id="gate"><div class="skeleton" style="height:120px"></div></div>
+  <div id="ui" hidden>
+    <div class="row between" style="margin-bottom:6px">
+      <div><h1 style="font-size:1.6rem;margin:0" id="title">Mostrador</h1><p class="muted" style="margin:0" id="who"></p></div>
+      <div class="row">
+        <label class="sr-only" for="branch">Sucursal</label>
+        <select id="branch" style="width:auto;min-width:200px"></select>
+        <a class="btn btn-secondary btn-sm" id="toOwner" href="/dueno" hidden>Panel del negocio</a>
+        <button class="btn btn-secondary btn-sm" id="logout" type="button">Salir</button>
+      </div>
+    </div>
+    <div id="net" style="margin:10px 0"></div>
+    <div class="tabs" role="tablist" aria-label="Secciones">
+      <button role="tab" data-tab="mostrador" aria-controls="t-mostrador" id="tb-mostrador">Mostrador</button>
+      <button role="tab" data-tab="turno" aria-controls="t-turno" id="tb-turno">Cambio de turno</button>
+      <button role="tab" data-tab="contingencia" aria-controls="t-contingencia" id="tb-contingencia">Sin internet</button>
+      <button role="tab" data-tab="impresa" aria-controls="t-impresa" id="tb-impresa">Tarjeta impresa</button>
+    </div>
+
+    <section id="t-mostrador" role="tabpanel" aria-labelledby="tb-mostrador">
+      <div class="counter">
+        <div class="panel identify">
+          <h2 style="font-size:1.2rem;margin:0">1. Identificar tarjeta</h2>
+          <form id="find" class="row" novalidate>
+            <label class="sr-only" for="code">Número de tarjeta</label>
+            <input id="code" class="code-input" placeholder="C-XXXXXX" autocomplete="off" autocapitalize="characters" style="flex:1;min-width:150px">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+          </form>
+          <button class="btn btn-secondary" id="scan" type="button">Escanear QR con la cámara</button>
+          <div id="camera" hidden>
+            <div class="video-box"><video id="video" playsinline muted></video><div class="aim" aria-hidden="true"></div></div>
+            <div class="row" style="margin-top:8px"><button class="btn btn-secondary btn-sm" id="stopScan" type="button">Cerrar cámara</button><span class="small muted" id="scanMsg">Apunta al QR de la tarjeta del cliente.</span></div>
+          </div>
+          <p class="small muted" style="margin:0">Identificar la tarjeta no suma puntos. Si el QR no se lee, escribe el número que aparece junto a él.</p>
+          <div id="findMsg"></div>
+        </div>
+        <div id="cardPanel">
+          <div class="panel empty"><p><b>Sin tarjeta seleccionada</b></p><p>Escanea el QR del cliente o escribe su número para ver saldo y registrar la compra o el canje.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="t-turno" role="tabpanel" aria-labelledby="tb-turno" hidden><div id="shift"></div></section>
+
+    <section id="t-contingencia" role="tabpanel" aria-labelledby="tb-contingencia" hidden>
+      <div class="grid-2">
+        <div class="panel">
+          <h2>Si se cae internet o el servidor</h2>
+          <ol>
+            <li>No confirmes canjes: sin conexión no se puede verificar el saldo.</li>
+            <li>Atiende la venta normalmente y anota en la hoja de contingencia: número de tarjeta, ticket, importe y hora.</li>
+            <li>Guarda el ticket. No prometas los puntos como ya sumados: quedan pendientes de validar.</li>
+            <li>Cuando regrese la conexión, captura la hoja aquí. El encargado la revisa y la aplica; un ticket repetido no suma dos veces.</li>
+          </ol>
+          <button class="btn btn-secondary" type="button" id="printSheet">Imprimir hoja de contingencia</button>
+          <p class="small muted">Esta pantalla no funciona sin conexión: no hay modo fuera de línea.</p>
+        </div>
+        <div class="panel">
+          <h2>Capturar comprobantes al reconectar</h2>
+          <form id="contForm" novalidate>
+            <div id="contRows"></div>
+            <div class="row"><button class="btn btn-secondary btn-sm" type="button" id="addRow">Agregar renglón</button></div>
+            <div id="contMsg" style="margin:12px 0"></div>
+            <button class="btn btn-primary" type="submit">Enviar a revisión</button>
+          </form>
+        </div>
+      </div>
+      <div id="sheet" class="print-sheet" style="margin-top:20px;text-align:left" hidden></div>
+    </section>
+
+    <section id="t-impresa" role="tabpanel" aria-labelledby="tb-impresa" hidden>
+      <div class="panel" style="max-width:640px">
+        <h2>Tarjeta impresa para clientes sin celular</h2>
+        <p>Se crea con 0 puntos y un número único. El saldo vive en el servidor, no en el papel.</p>
+        <p class="sim"><strong>Avisa al cliente:</strong> una tarjeta impresa sin contacto registrado funciona al portador. Si la pierde, no se puede reponer porque no hay forma de verificar al titular.</p>
+        <button class="btn btn-primary" type="button" id="issue">Emitir tarjeta impresa</button>
+        <div id="issueMsg" style="margin-top:12px"></div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

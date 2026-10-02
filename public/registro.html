@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obtener mi tarjeta — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script type="module" src="/js/pages/registro.js"></script>
+</head>
+<body>
+<main class="wrap" style="max-width:640px">
+  <div id="branchInfo"><div class="skeleton" style="height:90px"></div></div>
+  <section class="panel" id="step1" hidden>
+    <h2>Obtener mi tarjeta</h2>
+    <p class="muted">Te enviamos un código para confirmar tu contacto. Así podrás recuperar tu tarjeta si cambias de celular o pierdes el papel.</p>
+    <form id="form1" novalidate>
+      <div class="field"><label for="name">Tu nombre</label><input id="name" name="name" type="text" autocomplete="given-name" required maxlength="60"></div>
+      <div class="field"><span class="small muted" style="display:block;margin-bottom:6px;font-weight:600;color:var(--ink)">¿Cómo te enviamos el código?</span>
+        <div class="seg" role="radiogroup" aria-label="Canal">
+          <label><input type="radio" name="channel" value="whatsapp" checked><span>WhatsApp</span></label>
+          <label><input type="radio" name="channel" value="sms"><span>SMS</span></label>
+          <label><input type="radio" name="channel" value="email"><span>Correo</span></label>
+        </div>
+      </div>
+      <div class="field" id="phoneField"><label for="phone">Celular (10 dígitos)</label><input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="14"></div>
+      <div class="field" id="emailField" hidden><label for="email">Correo</label><input id="email" name="email" type="email" autocomplete="email"></div>
+      <div class="field"><label class="check"><input type="checkbox" name="acceptPrivacy" id="acceptPrivacy"><span>Acepto el <a href="/privacidad" target="_blank">aviso de privacidad</a> para usar la tarjeta. (Obligatorio)</span></label></div>
+      <div class="field"><label class="check"><input type="checkbox" name="marketing" id="marketing"><span>Quiero recibir promociones de este negocio. (Opcional; puedes cambiarlo cuando quieras y no afecta tu tarjeta)</span></label></div>
+      <div id="msg1"></div>
+      <button class="btn btn-primary btn-big" type="submit">Enviar código</button>
+    </form>
+  </section>
+  <section class="panel" id="step2" hidden>
+    <h2>Escribe tu código</h2>
+    <p id="sentTo" class="muted"></p>
+    <div id="simNote"></div>
+    <form id="form2" novalidate>
+      <div class="field"><label for="code">Código de 6 dígitos</label><input id="code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" class="code-input"></div>
+      <div id="msg2"></div>
+      <div class="row"><button class="btn btn-primary" type="submit">Confirmar</button><button class="btn btn-secondary" type="button" id="back">Cambiar contacto</button></div>
+    </form>
+  </section>
+  <section id="done" hidden></section>
+</main>
+</body>
+</html>

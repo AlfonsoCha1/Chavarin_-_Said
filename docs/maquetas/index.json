@@ -1,0 +1,207 @@
+[
+ {
+  "file": "01-presentacion-escritorio.png",
+  "title": "Página de presentación (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "02-directorio-categorias-escritorio.png",
+  "title": "Directorio con categorías desplegadas (escritorio)",
+  "note": "Comida y bebidas › Comida rápida abierta; las ramas se abren con clic, teclado o mouse."
+ },
+ {
+  "file": "03-busqueda-escritorio.png",
+  "title": "Búsqueda de negocios y sucursales (escritorio)",
+  "note": "Búsqueda \"centro\": coincide en nombre de sucursal, colonia y dirección; se resalta la coincidencia."
+ },
+ {
+  "file": "03b-busqueda-vacia-escritorio.png",
+  "title": "Búsqueda sin resultados — estado vacío (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "04-sucursal-escritorio.png",
+  "title": "Página de sucursal (escritorio)",
+  "note": "Dirección, programa, premios, condiciones, sucursales que comparten saldo y botón \"Obtener mi tarjeta\"."
+ },
+ {
+  "file": "04b-registro-cliente-qr-escritorio.png",
+  "title": "Registro del cliente desde el QR del mostrador (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "05-registro-negocio-escritorio.png",
+  "title": "Registro del negocio (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "09-situaciones-escritorio.png",
+  "title": "Centro de situaciones y soluciones (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "01-presentacion-celular.png",
+  "title": "Página de presentación (celular)",
+  "note": ""
+ },
+ {
+  "file": "02-directorio-categorias-celular.png",
+  "title": "Directorio con categorías desplegadas (celular)",
+  "note": "Comida y bebidas › Comida rápida abierta; las ramas se abren con clic, teclado o mouse."
+ },
+ {
+  "file": "03-busqueda-celular.png",
+  "title": "Búsqueda de negocios y sucursales (celular)",
+  "note": "Búsqueda \"centro\": coincide en nombre de sucursal, colonia y dirección; se resalta la coincidencia."
+ },
+ {
+  "file": "03b-busqueda-vacia-celular.png",
+  "title": "Búsqueda sin resultados — estado vacío (celular)",
+  "note": ""
+ },
+ {
+  "file": "04-sucursal-celular.png",
+  "title": "Página de sucursal (celular)",
+  "note": "Dirección, programa, premios, condiciones, sucursales que comparten saldo y botón \"Obtener mi tarjeta\"."
+ },
+ {
+  "file": "04b-registro-cliente-qr-celular.png",
+  "title": "Registro del cliente desde el QR del mostrador (celular)",
+  "note": ""
+ },
+ {
+  "file": "05-registro-negocio-celular.png",
+  "title": "Registro del negocio (celular)",
+  "note": ""
+ },
+ {
+  "file": "09-situaciones-celular.png",
+  "title": "Centro de situaciones y soluciones (celular)",
+  "note": ""
+ },
+ {
+  "file": "08a-mis-tarjetas-codigo-escritorio.png",
+  "title": "Mis tarjetas: entrada con código (simulado)",
+  "note": ""
+ },
+ {
+  "file": "08-mis-tarjetas-escritorio.png",
+  "title": "Mis tarjetas del cliente (escritorio)",
+  "note": "Tres sectores distintos; QR + número; saldo del servidor; Wallet marcado como simulación."
+ },
+ {
+  "file": "08-mis-tarjetas-celular.png",
+  "title": "Mis tarjetas del cliente (celular)",
+  "note": "Tres sectores distintos; QR + número; saldo del servidor; Wallet marcado como simulación."
+ },
+ {
+  "file": "07a-empleado-inicio-escritorio.png",
+  "title": "Panel del empleado: sin tarjeta seleccionada — estado vacío (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "07-empleado-compra-exito-escritorio.png",
+  "title": "Panel del empleado: compra confirmada — éxito (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "07b-empleado-ticket-duplicado-escritorio.png",
+  "title": "Panel del empleado: ticket repetido — error",
+  "note": ""
+ },
+ {
+  "file": "07c-empleado-resultado-incierto-escritorio.png",
+  "title": "Panel del empleado: respuesta interrumpida — pendiente de consultar",
+  "note": ""
+ },
+ {
+  "file": "07d-empleado-consulta-estado-escritorio.png",
+  "title": "Panel del empleado: consulta de estado — \"No se guardó; reintenta con la misma clave\"",
+  "note": ""
+ },
+ {
+  "file": "07e-empleado-sin-internet-escritorio.png",
+  "title": "Panel del empleado: contingencia sin internet",
+  "note": ""
+ },
+ {
+  "file": "07f-empleado-cargando-escritorio.png",
+  "title": "Panel del empleado: buscando tarjeta — carga",
+  "note": ""
+ },
+ {
+  "file": "07a-empleado-inicio-celular.png",
+  "title": "Panel del empleado: sin tarjeta seleccionada — estado vacío (celular)",
+  "note": ""
+ },
+ {
+  "file": "07-empleado-compra-exito-celular.png",
+  "title": "Panel del empleado: compra confirmada — éxito (celular)",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-resumen-escritorio.png",
+  "title": "Panel del dueño: resumen y recurrencia (escritorio)",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-tarjeta-escritorio.png",
+  "title": "Panel del dueño: tarjetas y ajustes",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-empleados-escritorio.png",
+  "title": "Panel del dueño: empleados y permisos",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-programa-escritorio.png",
+  "title": "Panel del dueño: programa y premios",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-sucursales-escritorio.png",
+  "title": "Panel del dueño: sucursales y QR",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-canjes-escritorio.png",
+  "title": "Panel del dueño: canjes",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-error-carga-escritorio.png",
+  "title": "Panel del dueño: error de carga con reintento",
+  "note": ""
+ },
+ {
+  "file": "06-dueno-resumen-celular.png",
+  "title": "Panel del dueño: resumen y recurrencia (celular)",
+  "note": ""
+ },
+ {
+  "file": "10-admin-negocios-escritorio.png",
+  "title": "Administración: negocios",
+  "note": ""
+ },
+ {
+  "file": "10-admin-categorias-escritorio.png",
+  "title": "Administración: categorias",
+  "note": ""
+ },
+ {
+  "file": "10-admin-integraciones-escritorio.png",
+  "title": "Administración: integraciones",
+  "note": ""
+ },
+ {
+  "file": "11-qr-mostrador-escritorio.png",
+  "title": "QR de mostrador para imprimir",
+  "note": ""
+ },
+ {
+  "file": "12-buzon-simulado-escritorio.png",
+  "title": "Buzón simulado de la demostración",
+  "note": ""
+ }
+]

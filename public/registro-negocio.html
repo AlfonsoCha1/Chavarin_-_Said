@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registrar mi negocio — Chavarín & Said</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<script type="module" src="/js/pages/registro-negocio.js"></script>
+</head>
+<body>
+<main class="wrap" style="max-width:860px">
+  <h1>Registrar mi negocio</h1>
+  <p class="lead">Llena los datos básicos. Revisamos la información antes de publicar tu negocio en el directorio.</p>
+  <form id="f" novalidate>
+    <fieldset><legend>Tu cuenta de dueño</legend>
+      <div class="row"><div style="flex:1;min-width:200px"><label for="ownerName">Nombre</label><input id="ownerName" name="ownerName" autocomplete="name"></div>
+      <div style="flex:1;min-width:200px"><label for="ownerEmail">Correo</label><input id="ownerEmail" name="ownerEmail" type="email" autocomplete="email"></div></div>
+      <div class="row" style="margin-top:8px"><div style="flex:1;min-width:200px"><label for="ownerPassword">Contraseña (mínimo 10 caracteres)</label><input id="ownerPassword" name="ownerPassword" type="password" autocomplete="new-password"></div>
+      <div style="flex:1;min-width:200px"><label for="ownerPhone">Teléfono (opcional)</label><input id="ownerPhone" name="ownerPhone" type="tel"></div></div>
+    </fieldset>
+    <fieldset><legend>Negocio</legend>
+      <div class="field"><label for="companyName">Nombre del negocio</label><input id="companyName" name="companyName"></div>
+      <div class="field"><label for="categoryId">Categoría</label><select id="categoryId" name="categoryId"><option value="">Cargando…</option></select><div class="hint">¿No encuentras tu giro? Elige “Otras tiendas” u “Otros servicios”; nosotros ordenamos las categorías.</div></div>
+      <div class="field"><label for="description">Descripción corta (opcional)</label><textarea id="description" name="description" maxlength="400"></textarea></div>
+      <div class="row"><div><label for="cardColor">Color de tu tarjeta</label><input id="cardColor" name="cardColor" type="color" value="#1C2433"></div>
+      <div style="flex:1;min-width:220px"><label for="logoUrl">Logotipo (URL, opcional)</label><input id="logoUrl" name="logoUrl" type="url" placeholder="https://"></div></div>
+    </fieldset>
+    <fieldset><legend>Primera sucursal</legend>
+      <div class="row"><div style="flex:1;min-width:200px"><label for="branchName">Nombre de la sucursal</label><input id="branchName" name="branchName" placeholder="Sucursal Centro"></div>
+      <div style="flex:2;min-width:240px"><label for="street">Calle y número</label><input id="street" name="street" autocomplete="address-line1"></div></div>
+      <div class="row" style="margin-top:8px"><div style="flex:1;min-width:160px"><label for="neighborhood">Colonia</label><input id="neighborhood" name="neighborhood"></div>
+      <div style="flex:1;min-width:160px"><label for="city">Ciudad o municipio</label><input id="city" name="city" autocomplete="address-level2"></div>
+      <div style="flex:1;min-width:140px"><label for="state">Estado</label><input id="state" name="state" autocomplete="address-level1"></div>
+      <div style="width:120px"><label for="postalCode">C.P.</label><input id="postalCode" name="postalCode" inputmode="numeric" autocomplete="postal-code"></div></div>
+      <div class="field" style="margin-top:8px"><label for="hours">Horario (opcional)</label><input id="hours" name="hours" placeholder="Lun a sáb, 9:00 a 20:00"></div>
+      <details><summary>Coordenadas para el mapa (opcional)</summary>
+        <p class="small muted">No es obligatorio. Puedes escribirlas o, si quieres, usar la ubicación de este dispositivo.</p>
+        <div class="row" style="align-items:flex-end"><div><label for="lat">Latitud</label><input id="lat" name="lat" inputmode="decimal"></div><div><label for="lng">Longitud</label><input id="lng" name="lng" inputmode="decimal"></div>
+        <button class="btn btn-secondary btn-sm" type="button" id="geo">Usar mi ubicación</button></div><div id="geomsg"></div></details>
+    </fieldset>
+    <fieldset><legend>Programa de lealtad</legend>
+      <div class="field"><span style="display:block;font-weight:600;margin-bottom:6px">Tipo</span><div class="seg" role="radiogroup" aria-label="Tipo de programa">
+        <label><input type="radio" name="programKind" value="points" checked><span>Puntos</span></label><label><input type="radio" name="programKind" value="stamps"><span>Sellos</span></label></div></div>
+      <div class="row"><div style="width:200px"><label for="pointsPerPurchase" id="pplabel">Puntos por compra</label><input id="pointsPerPurchase" name="pointsPerPurchase" inputmode="numeric" value="10"></div>
+      <div style="width:200px"><label for="minPurchase">Compra mínima ($, opcional)</label><input id="minPurchase" name="minPurchase" inputmode="decimal" value="0"></div>
+      <div style="width:200px"><label for="expirationDays">Vencen tras días sin compras</label><input id="expirationDays" name="expirationDays" inputmode="numeric" placeholder="sin vencimiento"></div></div>
+      <div class="field" style="margin-top:8px"><label for="eligible">¿Qué compras cuentan?</label><input id="eligible" name="eligible" placeholder="Cualquier compra con ticket"></div>
+      <div class="row"><div style="flex:1;min-width:220px"><label for="rewardName">Premio</label><input id="rewardName" name="rewardName" placeholder="Una orden de tacos"></div>
+      <div style="width:160px"><label for="rewardCost">Cuesta</label><input id="rewardCost" name="rewardCost" inputmode="numeric" value="50"></div></div>
+      <p class="small muted" style="margin-top:8px">Tú cubres y entregas el premio. Podrás agregar más premios, sucursales y empleados desde tu panel.</p>
+    </fieldset>
+    <fieldset><legend>Plan</legend>
+      <div class="seg" role="radiogroup" aria-label="Plan"><label><input type="radio" name="plan" value="basico" checked><span>Básico $199/mes</span></label><label><input type="radio" name="plan" value="pro"><span>Pro $349/mes</span></label></div>
+      <p class="small muted" style="margin-top:8px">Instalación de $300 a $500 MXN. Precios iniciales sujetos a validación; durante el piloto el pago se registra manualmente.</p>
+    </fieldset>
+    <div id="msg" style="margin-bottom:12px"></div>
+    <button class="btn btn-primary btn-big" type="submit" style="max-width:360px">Enviar solicitud</button>
+  </form>
+  <div id="done" hidden></div>
+</main>
+</body>
+</html>
