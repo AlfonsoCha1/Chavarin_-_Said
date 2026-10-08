@@ -30,10 +30,12 @@ Contraseña de todas: `demo-12345` (también aparecen como botones en `/entrar`)
 | Encargada, Tacos del Centro | `encargada.tacos@example.com` |
 | Dueño, Tacos del Centro | `dueno.tacos@example.com` |
 | Empleado, Café Aurora (pide código al canjear) | `barista.cafe@example.com` |
+| Caja, Tapioca Colibrí (Cuernavaca, sellos) | `caja.colibri@example.com` |
+| Dueña, Tapioca Colibrí | `dueno.colibri@example.com` |
 | Dueño, Música Allegro | `dueno.allegro@example.com` |
 | Administración de la plataforma | `admin@example.com` |
 
-Clientes de prueba: entra a `/mis-tarjetas` con `ana.martinez@example.com` (correo) y lee el código en `/buzon-demo`. Tarjetas útiles: `C-104` (30 puntos), `C-105` (50), `C-106` (impresa, sin titular), `C-AUR01` (Café Aurora), `C-ALG01` (Música Allegro).
+Clientes de prueba: entra a `/mis-tarjetas` con `ana.martinez@example.com` (correo) y lee el código en `/buzon-demo`. Tarjetas útiles: `C-104` (30 puntos), `C-105` (50), `C-106` (impresa, sin titular), `C-AUR01` (Café Aurora), `C-ALG01` (Música Allegro), `C-COL01` (Tapioca Colibrí, 6 de 9 sellos).
 
 ### Recorrido sugerido
 

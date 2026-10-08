@@ -41,6 +41,10 @@ describe('T01 categorías y búsqueda', () => {
     assert.ok(fastOnly.body.results.length >= 4);
     assert.ok(fastOnly.body.results.every((r: any) => ['Taquerías', 'Hamburguesas', 'Pizzerías'].includes(r.category)));
 
+    const cuerna = await p.get('/api/public/directory?q=cuernavaca');
+    assert.ok(cuerna.body.results.some((r: any) => r.company === 'Tapioca Colibrí' && r.category === 'Bebidas y postres'));
+    assert.ok(cuerna.body.results.every((r: any) => r.city === 'Cuernavaca'));
+
     const pending = await p.get('/api/public/directory?q=tecnopunto');
     assert.equal(pending.body.results.length, 0, 'un negocio pendiente no se publica');
   });
@@ -600,5 +604,27 @@ describe('T26 negocio suspendido · T27 protección de origen · T28 bloqueo de 
     for (let i = 0; i < 5; i++) assert.equal((await a.post('/api/staff/login', { email: 'dueno.dalia@example.com', password: 'equivocada' })).status, 401);
     const locked = await a.post('/api/staff/login', { email: 'dueno.dalia@example.com', password: 'demo-12345' });
     assert.equal(locked.status, 429);
+  });
+});
+
+describe('T31 tarjeta de sellos en Cuernavaca (Tapioca Colibrí)', () => {
+  it('la caja suma un sello; el premio de 9 sellos no se canjea antes de tiempo', async () => {
+    await env.fresh();
+    assert.equal(await balance('C-COL01'), 6);
+    const { a, branch } = await staff('caja.colibri@example.com');
+    const p = await a.post('/api/staff/purchases', { cardCode: 'C-COL01', branchId: branch(), ticketRef: 'COL-T1', idempotencyKey: key(), confirmPossibleDuplicate: true });
+    assert.equal(p.status, 200);
+    assert.equal(p.body.balance, 7);
+    assert.equal(p.body.message, 'Compra registrada: +1 sello.');
+
+    const card = await a.get('/api/staff/cards/C-COL01');
+    const free = card.body.rewards.find((r: any) => r.cost === 9);
+    const early = await a.post('/api/staff/redemptions', { cardCode: 'C-COL01', branchId: branch(), rewardId: free.id, idempotencyKey: key() });
+    assert.equal(early.status, 409);
+    assert.equal(early.body.error.code, 'INSUFFICIENT_BALANCE');
+    assert.equal(await balance('C-COL01'), 7, 'un canje rechazado no descuenta');
+
+    const tacos = await a.get('/api/staff/cards/C-104');
+    assert.equal(tacos.status, 404, 'la caja de Colibrí no ve tarjetas de otro negocio');
   });
 });

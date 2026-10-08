@@ -84,13 +84,13 @@ Dirección, programa, premios, condiciones, sucursales que comparten saldo y bot
 
 ## Mis tarjetas del cliente (escritorio)
 
-Tres sectores distintos; QR + número; saldo del servidor; Wallet marcado como simulación.
+Varios sectores (tacos, café, música, tapioca); QR + número; saldo del servidor; Wallet marcado como simulación.
 
 ![Mis tarjetas del cliente (escritorio)](08-mis-tarjetas-escritorio.png)
 
 ## Mis tarjetas del cliente (celular)
 
-Tres sectores distintos; QR + número; saldo del servidor; Wallet marcado como simulación.
+Varios sectores (tacos, café, música, tapioca); QR + número; saldo del servidor; Wallet marcado como simulación.
 
 ![Mis tarjetas del cliente (celular)](08-mis-tarjetas-celular.png)
 
