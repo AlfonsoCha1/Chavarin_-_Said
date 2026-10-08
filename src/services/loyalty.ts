@@ -315,7 +315,7 @@ export async function confirmPurchase(ctx: StaffCtx, input: PurchaseInput) {
       });
       return {
         status: 'confirmed' as const,
-        message: `Compra registrada: +${points} ${card.kind === 'stamps' ? 'sellos' : 'puntos'}.`,
+        message: `Compra registrada: +${points} ${card.kind === 'stamps' ? (points === 1 ? 'sello' : 'sellos') : points === 1 ? 'punto' : 'puntos'}.`,
         purchase: { id: purchase.id, ticketRef: ticket, points, createdAt: purchase.created_at, ruleVersion: v.version },
         balance: newBalance,
         cardCode: card.code,

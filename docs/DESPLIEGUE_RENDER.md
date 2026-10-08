@@ -23,6 +23,8 @@ Con plan de pago (Starter) ninguna de las dos capas hace falta: se pone `KEEPALI
 ## Pasos
 
 > Estado actual (1 oct 2026): servicio `chavarin-said-lealtad` (free, Ohio) y base `chavarin-said-db` (free, vence el 31 oct 2026) creados en el espacio de trabajo de Render. Se crearon con la herramienta de Render, no con el Blueprint; `DATABASE_URL` se pega a mano desde la base.
+>
+> Revisión del 8 oct 2026: el único despliegue (1 oct) **falló** porque el servicio no tiene `DATABASE_URL` (intentó conectarse a `localhost:5432`). Falta pegar la **Internal Database URL** de `chavarin-said-db` en *Environment* del servicio y elegir *Save, rebuild, and deploy*. La base vence el **31 oct 2026**.
 
 1. **GitHub**: crear el repositorio privado vacío `chavarin-said-lealtad` y subir el código (rama `main`).
 2. **Render**: entrar con la cuenta de GitHub y dar permiso a Render sobre ese repositorio.

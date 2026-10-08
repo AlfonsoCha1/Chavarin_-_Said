@@ -89,7 +89,7 @@ for (const vp of ['escritorio', 'celular'] as const) {
   await page.click('#cform button[type=submit]');
   await page.waitForSelector('#cards article');
   await page.waitForLoadState('networkidle');
-  await shot(page, `08-mis-tarjetas-${vp}`, `Mis tarjetas del cliente (${vp})`, 'Tres sectores distintos; QR + número; saldo del servidor; Wallet marcado como simulación.');
+  await shot(page, `08-mis-tarjetas-${vp}`, `Mis tarjetas del cliente (${vp})`, 'Varios sectores (tacos, café, música, tapioca); QR + número; saldo del servidor; Wallet marcado como simulación.');
   await ctx.close();
 }
 

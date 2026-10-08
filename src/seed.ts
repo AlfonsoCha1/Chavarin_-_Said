@@ -16,6 +16,7 @@ const CATEGORIES: [string, string, string | null, number][] = [
   ['Hamburguesas', 'hamburguesas', 'comida-rapida', 2],
   ['Pizzerías', 'pizzerias', 'comida-rapida', 3],
   ['Panaderías y reposterías', 'panaderias-y-reposterias', 'comida-y-bebidas', 4],
+  ['Bebidas y postres', 'bebidas-y-postres', 'comida-y-bebidas', 5],
   ['Tiendas', 'tiendas', null, 2],
   ['Ropa y accesorios', 'ropa-y-accesorios', 'tiendas', 1],
   ['Instrumentos musicales', 'instrumentos-musicales', 'tiendas', 2],
@@ -73,6 +74,20 @@ const COMPANIES: CompanyDef[] = [
     staff: [
       { email: 'dueno.cafe@example.com', name: 'Lucía Herrera', role: 'owner' },
       { email: 'barista.cafe@example.com', name: 'Tomás Aguilar', role: 'employee' },
+    ],
+  },
+  {
+    // Negocio ficticio en Cuernavaca para enseñar la demo a negocios de bebidas de la zona.
+    slug: 'tapioca-colibri', name: 'Tapioca Colibrí', color: '#C2185B', plan: 'basico',
+    description: 'Bebidas de tapioca, frappés y snacks. Junta 9 sellos y tu bebida número 10 va por la casa.',
+    branches: [{ code: 'tapioca-colibri-delicias', name: 'Sucursal Delicias', street: 'Calle Jacarandas 14', neighborhood: 'Delicias', city: 'Cuernavaca', state: 'Morelos', hours: 'Diario, 12:00 a 20:30', category: 'bebidas-y-postres' }],
+    programs: [{
+      name: 'Sellos Colibrí', kind: 'stamps', pts: 1, expiration: 180, eligible: 'Una bebida de tapioca o frappé por visita.',
+      rewards: [{ name: 'Bebida mediana gratis', cost: 9 }, { name: 'Topping extra', cost: 4 }], branches: ['tapioca-colibri-delicias'],
+    }],
+    staff: [
+      { email: 'dueno.colibri@example.com', name: 'Regina Ocampo', role: 'owner' },
+      { email: 'caja.colibri@example.com', name: 'Emiliano Flores', role: 'employee', branch: 'tapioca-colibri-delicias' },
     ],
   },
   {
@@ -380,6 +395,39 @@ export async function seed() {
     await sample('la-brasa-burger', 0, 5, 'C-BRA01', 3);
     await sample('panaderia-la-espiga', 0, 6, 'C-ESP01', 6);
     await sample('casa-jacaranda', 0, 7, 'C-JAC01', 2);
+
+    // ---- Historial ficticio de Tapioca Colibrí (Cuernavaca): 5 semanas de sellos y algunos canjes ----
+    // C-COL01 (Ana Martínez) queda con 6 sellos: le faltan 3 para su bebida gratis.
+    {
+      const col = ctx['tapioca-colibri'];
+      const cp = col.programs[0];
+      const cb = col.branchId.get('tapioca-colibri-delicias');
+      const cashier = col.userIds['employee:tapioca-colibri-delicias'];
+      const r2 = rng(7);
+      const holders = [0, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 2];
+      const colCards: any[] = [];
+      for (let i = 0; i < holders.length; i++) {
+        const code = `C-COL${String(i + 1).padStart(2, '0')}`;
+        const card = await one<any>(c, `INSERT INTO cards(code, program_id, customer_id, issued_branch_id, created_at) VALUES ($1,$2,$3,$4,$5) RETURNING *`, [code, cp.id, customerIds[holders[i]], cb, new Date(now - (36 - i) * 86400000).toISOString()]);
+        card.balance = 0;
+        colCards.push(card);
+      }
+      const evs: { at: Date; card: any }[] = [];
+      colCards.forEach((card, i) => {
+        const visits = i === 0 ? 6 : 2 + Math.floor(r2() * 11);
+        for (let v = 0; v < visits; v++) {
+          evs.push({ card, at: new Date(now - Math.floor(r2() * (34 - i)) * 86400000 - (2 + Math.floor(r2() * 7)) * 3600000) });
+        }
+      });
+      evs.sort((a, b) => a.at.getTime() - b.at.getTime());
+      let n = 1;
+      for (const e of evs) {
+        await addPurchase(c, { company: col.company, branch: cb, program: cp.id, card: e.card, ticket: `COL-${n++}`, amount: 6500 + Math.floor(r2() * 4000), points: 1, actor: cashier, at: e.at });
+        if (e.card.balance >= 9 && e.card.code !== 'C-COL01') {
+          await addRedemption(c, { company: col.company, branch: cb, program: cp.id, card: e.card, reward: cp.rewards[0], actor: cashier, at: new Date(e.at.getTime() + 60000), key: `seed:r:${e.card.code}:${n}` });
+        }
+      }
+    }
 
     await c.query(
       `INSERT INTO payments(company_id, amount_cents, concept, method, reference, period_month, recorded_by)

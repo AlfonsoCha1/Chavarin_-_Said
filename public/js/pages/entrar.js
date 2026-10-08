@@ -43,6 +43,8 @@ getConfig().then((cfg) => {
     ['Encargada (Tacos del Centro)', 'encargada.tacos@example.com'],
     ['Dueño (Tacos del Centro)', 'dueno.tacos@example.com'],
     ['Empleado (Café Aurora, pide código al canjear)', 'barista.cafe@example.com'],
+    ['Caja (Tapioca Colibrí, Cuernavaca)', 'caja.colibri@example.com'],
+    ['Dueña (Tapioca Colibrí, Cuernavaca)', 'dueno.colibri@example.com'],
     ['Dueño (Música Allegro)', 'dueno.allegro@example.com'],
     ['Administración de la plataforma', 'admin@example.com'],
   ];
